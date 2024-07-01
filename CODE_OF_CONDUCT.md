@@ -44,7 +44,7 @@ This Code of Conduct is adapted from the [Contributor Covenant][homepage], versi
 
 ### Note for Contributors
 
-The "kelogger" mentioned in this document is used strictly for educational purposes within the context of the loggy project. Its usage should adhere to the educational intent and ethical guidelines outlined in the project's documentation and educational resources.
+The "keylogger" mentioned in this document is used strictly for educational purposes within the context of the loggy project. Its usage should adhere to the educational intent and ethical guidelines outlined in the project's documentation and educational resources.
   
 [homepage]: http://contributor-covenant.org
 [version]: http://contributor-covenant.org/version/1/4/
