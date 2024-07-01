@@ -143,8 +143,8 @@ bool Scheduler::scheduleLoggerOnMacOs()
         return false;
     }
 
-    plistFile << "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" << std::endl;
-    plistFile << "<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">" << std::endl;
+    plistFile << R"(<?xml version="1.0" encoding="UTF-8"?>)" << std::endl;
+    plistFile << R"(<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">)" << std::endl;
     plistFile << "<plist version=\"1.0\">" << std::endl;
     plistFile << "<dict>" << std::endl;
     plistFile << "    <key>Label</key>" << std::endl;

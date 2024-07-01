@@ -1,4 +1,4 @@
-#include "../include/LinuxLogger.h"
+#include "../include/linuxLogger.h"
 #include "../include/obfuscator.h"
 #include "../include/antiDebug.h"
 

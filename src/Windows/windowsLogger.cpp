@@ -1,4 +1,4 @@
-#include "../include/WindowsLogger.h"
+#include "../include/windowsLogger.h"
 #include "../include/obfuscator.h"
 #include "../include/antiDebug.h"
 
@@ -9,7 +9,10 @@
 #include <iomanip>
 #include <thread>
 #include <fstream>
+
+#if defined(_WIN32) || defined(_WIN64)
 #include <Windows.h>
+#endif
 
 #if defined(_WIN32) || defined(_WIN64)
 std::unique_ptr<WindowsLogger> WindowsLogger::instance = nullptr;

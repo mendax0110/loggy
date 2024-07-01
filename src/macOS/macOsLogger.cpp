@@ -4,7 +4,7 @@
 
 #if defined(__APPLE__)
 
-MacOsLogger::MacOsLogger(const std::filesystem::path& logFilePath) : logFilePath(logFilePath)
+MacOsLogger::MacOsLogger(std::filesystem::path  logFilePath) : logFilePath(std::move(logFilePath))
 {
     initializeKeyMap();
 }
@@ -44,10 +44,11 @@ void MacOsLogger::startLogging()
     logFile << "\n\nRecording started\n" << std::put_time(std::localtime(&now), "%c %Z") << "\n";
     std::cout << "Logging to: " << logFilePath << '\n';
 
+    typedef struct CFMachPort CFMachPortRef;
     CGEventMask eventMask = (CGEventMaskBit(kCGEventKeyDown) | CGEventMaskBit(kCGEventFlagsChanged));
     auto eventTap = std::unique_ptr<CFMachPortRef, decltype(&CFRelease)>(
         CGEventTapCreate(kCGSessionEventTap, kCGHeadInsertEventTap, 0, eventMask, [](CGEventTapProxy proxy, CGEventType type, CGEventRef event, void* refcon) -> CGEventRef {
-            return static_cast<MacOsLogger*>(refcon)->eventCallback(proxy, type, event);
+            return static_cast<MacOsLogger*>(refcon)->eventCallback(proxy, type, event, refcon);
         }, this),
         CFRelease
     );

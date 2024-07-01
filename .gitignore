@@ -6,3 +6,12 @@
 
 # Ignore the .vscode folder
 .vscode
+
+# Ignore the cmake-build-debug folder
+cmake-build-debug
+
+# Ignore the cmake-build-release folder
+cmake-build-release
+
+# Ignore the .idea folder
+.idea

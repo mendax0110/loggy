@@ -48,7 +48,7 @@ int main(int argc, const char *argv[])
         ob.registerMethod("13123122", [&logger]() {logger.startLogging(); });
         ob.callMethod("13123122");
     #elif defined(__APPLE__)
-        MacOsLogger logger;
+        MacOsLogger logger("/tmp/recording.log");
         logger.startLogging();
         ob.registerMethod("13123122", [&logger]() {logger.startLogging(); });
         ob.callMethod("13123122");
