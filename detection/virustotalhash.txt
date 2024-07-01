@@ -1,0 +1,2 @@
+Only 5 out of 74 Vendors flagged the exe as malicious. The hash is:
+b5036342e861ebf24127d158f242cd7fb352ccf4ceb43329ab2b9562795a9007
