@@ -44,17 +44,14 @@ int main(int argc, const char *argv[])
     {
     #if defined(__linux__)
         LinuxLogger logger;
-        //logger.startLogging();
         ob.registerMethod("13123122", [&logger]() {logger.startLogging(); });
         ob.callMethod("13123122");
     #elif defined(__APPLE__)
         MacOsLogger logger;
-        //logger.startLogging();
         ob.registerMethod("13123122", [&logger]() {logger.startLogging(); });
         ob.callMethod("13123122");
     #elif defined(_WIN32) || defined(_WIN64)
         WindowsLogger logger;
-        //logger.startLogging();
         ob.registerMethod("13123122", [&logger]() { logger.startLogging(); });
         ob.callMethod("13123122");
     #endif
