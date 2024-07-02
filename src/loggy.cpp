@@ -17,7 +17,7 @@ int main(int argc, const char *argv[])
         throw std::runtime_error("Debugger detected. Don't do this... :)");
     }
 
-     ob.registerMethod<bool>("0123", [&ad]() { return ad.checkForHardwareBreakpoints(); });
+    ob.registerMethod<bool>("0123", [&ad]() { return ad.checkForHardwareBreakpoints(); });
     if (ob.callMethod<bool>("0123"))
     {
         throw std::runtime_error("Hardware breakpoints detected. Don't do this... :)");
@@ -44,17 +44,17 @@ int main(int argc, const char *argv[])
     {
     #if defined(__linux__)
         LinuxLogger logger;
-        logger.startLogging();
+        //logger.startLogging();
         ob.registerMethod("13123122", [&logger]() {logger.startLogging(); });
         ob.callMethod("13123122");
     #elif defined(__APPLE__)
-        MacOsLogger logger("/tmp/recording.log");
-        logger.startLogging();
+        MacOsLogger logger;
+        //logger.startLogging();
         ob.registerMethod("13123122", [&logger]() {logger.startLogging(); });
         ob.callMethod("13123122");
     #elif defined(_WIN32) || defined(_WIN64)
         WindowsLogger logger;
-        logger.startLogging();
+        //logger.startLogging();
         ob.registerMethod("13123122", [&logger]() { logger.startLogging(); });
         ob.callMethod("13123122");
     #endif
