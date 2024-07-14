@@ -1,0 +1,546 @@
+graph: {
+title: "Graph of main"
+manhattan_edges: yes
+layoutalgorithm: mindepth
+finetuning: no
+layout_downfactor: 100
+layout_upfactor: 0
+layout_nearfactor: 0
+xlspace: 12
+yspace: 30
+// IDA palette
+colorentry 32: 0 0 0
+colorentry 33: 0 0 255
+colorentry 34: 0 0 255
+colorentry 35: 128 128 128
+colorentry 36: 128 128 128
+colorentry 37: 0 0 128
+colorentry 38: 0 0 128
+colorentry 39: 0 0 255
+colorentry 40: 0 0 255
+colorentry 41: 0 0 128
+colorentry 42: 0 128 0
+colorentry 43: 0 255 0
+colorentry 44: 0 128 0
+colorentry 45: 255 128 0
+colorentry 46: 0 128 0
+colorentry 47: 128 128 255
+colorentry 48: 255 0 0
+colorentry 49: 128 128 0
+colorentry 50: 1 1 1
+colorentry 51: 192 192 192
+colorentry 52: 0 0 255
+colorentry 53: 0 0 255
+colorentry 54: 0 0 255
+colorentry 55: 128 128 128
+colorentry 56: 128 128 255
+colorentry 57: 0 128 0
+colorentry 58: 0 0 128
+colorentry 59: 0 0 255
+colorentry 60: 128 0 128
+colorentry 61: 0 128 0
+colorentry 62: 0 128 0
+colorentry 63: 0 128 64
+colorentry 64: 0 0 128
+colorentry 65: 0 0 128
+colorentry 66: 255 0 255
+colorentry 67: 128 128 0
+colorentry 68: 0 0 128
+colorentry 69: 0 0 255
+colorentry 70: 0 0 128
+colorentry 71: 0 0 255
+colorentry 72: 0 0 0
+colorentry 73: 255 255 255
+colorentry 74: 192 187 175
+colorentry 75: 0 255 255
+colorentry 76: 0 0 0
+colorentry 77: 128 0 0
+colorentry 78: 128 128 128
+colorentry 79: 128 128 0
+colorentry 80: 255 0 255
+colorentry 81: 0 68 255
+colorentry 82: 0 0 255
+colorentry 83: 0 0 0
+colorentry 84: 50 205 50
+node: { title: "0" label: "69main31:
+push    rbp
+push    rdi
+push    rsi
+push    rbx
+sub     rsp, 4B8h
+lea     rbp, [rsp+80h]
+mov     [rbp+450h+argc], ecx
+mov     [rbp+450h+argv], rdx
+call    __main
+lea     rax, [rbp+450h+ob]
+mov     rcx, rax; this
+call    _ZN10ObfuscatorC1Ev; Obfuscator::Obfuscator(void)
+lea     rax, [rbp+450h+ad]
+mov     rdx, rax; __f
+lea     rax, [rbp+450h+p_method]
+mov     rcx, rax; this
+call    _ZNSt8functionIFbvEEC1IZ4mainEUlvE_vvEET_; std::function<bool ()(void)>::function<main::{lambda(void)#1},void,void>(main::{lambda(void)#1})
+lea     rax, [rbp+450h+__a]
+mov     rcx, rax
+call    _ZNSaIcEC1Ev; std::allocator<char>::allocator(void)
+lea     rdx, [rbp+450h+__a]
+lea     rax, [rbp+450h+obfuscatedName]
+mov     r8, rdx; __a
+lea     rdx, a01110; \"01110\"
+mov     rcx, rax; this
+call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC1IS3_EEPKcRKS3_; std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::allocator<char>>(char const*,std::allocator<char> const&)
+lea     rcx, [rbp+450h+p_method]
+lea     rdx, [rbp+450h+obfuscatedName]; obfuscatedName
+lea     rax, [rbp+450h+ob]
+mov     r8, rcx; p_method
+mov     rcx, rax; this
+call    _ZN10Obfuscator14registerMethodIbEEvRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt8functionIFT_vEE; Obfuscator::registerMethod<bool>(std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>> const&,std::function<bool ()(void)>)
+lea     rax, [rbp+450h+obfuscatedName]
+mov     rcx, rax
+call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED1Ev; std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::~basic_string()
+lea     rax, [rbp+450h+__a]
+mov     rcx, rax
+call    _ZNSaIcED1Ev; std::allocator<char>::~allocator()
+lea     rax, [rbp+450h+p_method]
+mov     rcx, rax; this
+call    _ZNSt8functionIFbvEED1Ev; std::function<bool ()(void)>::~function()
+lea     rax, [rbp+450h+var_1A1]
+mov     rcx, rax
+call    _ZNSaIcEC1Ev; std::allocator<char>::allocator(void)
+lea     rdx, [rbp+450h+var_1A1]
+lea     rax, [rbp+450h+var_1D0]
+mov     r8, rdx; __a
+lea     rdx, a01110; \"01110\"
+mov     rcx, rax; this
+call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC1IS3_EEPKcRKS3_; std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::allocator<char>>(char const*,std::allocator<char> const&)
+lea     rdx, [rbp+450h+var_1D0]; obfuscatedName
+lea     rax, [rbp+450h+ob]
+mov     rcx, rax; this
+call    _ZN10Obfuscator10callMethodIbEET_RKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE; Obfuscator::callMethod<bool>(std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>> const&)
+mov     ebx, eax
+lea     rax, [rbp+450h+var_1D0]
+mov     rcx, rax
+call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED1Ev; std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::~basic_string()
+lea     rax, [rbp+450h+var_1A1]
+mov     rcx, rax
+call    _ZNSaIcED1Ev; std::allocator<char>::~allocator()
+test    bl, bl
+jz      short loc_140003AD8" vertical_order: 0 }
+node: { title: "1" label: "mov     ecx, 10h; thrown_size
+call    __cxa_allocate_exception
+mov     rbx, rax
+lea     rdx, aDebuggerDetect_1; \"Debugger detected. Don't do this... :)\"
+mov     rcx, rbx; this
+call    _ZNSt13runtime_errorC1EPKc; std::runtime_error::runtime_error(char const*)
+mov     r8, cs:_refptr__ZNSt13runtime_errorD1Ev; void (__fastcall *)(void *)
+lea     rdx, _ZTISt13runtime_error; lptinfo
+mov     rcx, rbx; void *
+call    __cxa_throw" vertical_order: 44 }
+node: { title: "2" label: "lea     rax, [rbp+450h+ad]
+mov     rdx, rax; __f
+lea     rax, [rbp+450h+var_1A0]
+mov     rcx, rax; this
+call    _ZNSt8functionIFbvEEC1IZ4mainEUlvE0_vvEET_; std::function<bool ()(void)>::function<main::{lambda(void)#2},void,void>(main::{lambda(void)#2})
+lea     rax, [rbp+450h+var_151]
+mov     rcx, rax
+call    _ZNSaIcEC1Ev; std::allocator<char>::allocator(void)
+lea     rdx, [rbp+450h+var_151]
+lea     rax, [rbp+450h+var_180]
+mov     r8, rdx; __a
+lea     rdx, a0123; \"0123\"
+mov     rcx, rax; this
+call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC1IS3_EEPKcRKS3_; std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::allocator<char>>(char const*,std::allocator<char> const&)
+lea     rcx, [rbp+450h+var_1A0]
+lea     rdx, [rbp+450h+var_180]; obfuscatedName
+lea     rax, [rbp+450h+ob]
+mov     r8, rcx; p_method
+mov     rcx, rax; this
+call    _ZN10Obfuscator14registerMethodIbEEvRKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt8functionIFT_vEE; Obfuscator::registerMethod<bool>(std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>> const&,std::function<bool ()(void)>)
+lea     rax, [rbp+450h+var_180]
+mov     rcx, rax
+call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED1Ev; std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::~basic_string()
+lea     rax, [rbp+450h+var_151]
+mov     rcx, rax
+call    _ZNSaIcED1Ev; std::allocator<char>::~allocator()
+lea     rax, [rbp+450h+var_1A0]
+mov     rcx, rax; this
+call    _ZNSt8functionIFbvEED1Ev; std::function<bool ()(void)>::~function()
+lea     rax, [rbp+450h+var_121]
+mov     rcx, rax
+call    _ZNSaIcEC1Ev; std::allocator<char>::allocator(void)
+lea     rdx, [rbp+450h+var_121]
+lea     rax, [rbp+450h+var_150]
+mov     r8, rdx; __a
+lea     rdx, a0123; \"0123\"
+mov     rcx, rax; this
+call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC1IS3_EEPKcRKS3_; std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::allocator<char>>(char const*,std::allocator<char> const&)
+lea     rdx, [rbp+450h+var_150]; obfuscatedName
+lea     rax, [rbp+450h+ob]
+mov     rcx, rax; this
+call    _ZN10Obfuscator10callMethodIbEET_RKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE; Obfuscator::callMethod<bool>(std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>> const&)
+mov     ebx, eax
+lea     rax, [rbp+450h+var_150]
+mov     rcx, rax
+call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED1Ev; std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::~basic_string()
+lea     rax, [rbp+450h+var_121]
+mov     rcx, rax
+call    _ZNSaIcED1Ev; std::allocator<char>::~allocator()
+test    bl, bl
+jz      short loc_140003C08" }
+node: { title: "3" label: "mov     ecx, 10h; thrown_size
+call    __cxa_allocate_exception
+mov     rbx, rax
+lea     rdx, aHardwareBreakp_1; \"Hardware breakpoints detected. Don't do\"...
+mov     rcx, rbx; this
+call    _ZNSt13runtime_errorC1EPKc; std::runtime_error::runtime_error(char const*)
+mov     r8, cs:_refptr__ZNSt13runtime_errorD1Ev; void (__fastcall *)(void *)
+lea     rdx, _ZTISt13runtime_error; lptinfo
+mov     rcx, rbx; void *
+call    __cxa_throw" vertical_order: 44 }
+node: { title: "4" label: "mov     [rbp+450h+scheduleLogger], 0
+cmp     [rbp+450h+argc], 1
+jle     loc_140003D86" }
+node: { title: "5" label: "mov     [rbp+450h+i], 0" }
+node: { title: "6" label: "mov     eax, [rbp+450h+i]
+cmp     eax, [rbp+450h+argc]
+jge     short loc_140003C76" }
+node: { title: "7" label: "mov     eax, [rbp+450h+i]
+cdqe
+lea     rdx, ds:0[rax*8]
+mov     rax, [rbp+450h+argv]
+add     rax, rdx
+mov     rax, [rax]
+lea     rdx, Str2; \"--sd\"
+mov     rcx, rax; Str1
+call    strcmp
+test    eax, eax
+jnz     short loc_140003C6D" }
+node: { title: "8" label: "mov     [rbp+450h+scheduleLogger], 1
+jmp     short loc_140003C76" }
+node: { title: "9" label: "add     [rbp+450h+i], 1
+jmp     short loc_140003C26" }
+node: { title: "10" label: "lea     rax, [rbp+450h+scheduler]
+mov     rsi, rax
+mov     dil, [rbp+450h+scheduleLogger]
+mov     [rbp+450h+__f.__scheduler], rsi
+mov     qword ptr [rbp+450h+__f.__scheduleLogger], rdi
+lea     rdx, [rbp+450h+__f]; __f
+lea     rax, [rbp+450h+var_120]
+mov     rcx, rax; this
+call    _ZNSt8functionIFvvEEC1IZ4mainEUlvE1_vvEET_; std::function<void ()(void)>::function<main::{lambda(void)#3},void,void>(main::{lambda(void)#3})
+lea     rax, [rbp+450h+var_D1]
+mov     rcx, rax
+call    _ZNSaIcEC1Ev; std::allocator<char>::allocator(void)
+lea     rdx, [rbp+450h+var_D1]
+lea     rax, [rbp+450h+var_100]
+mov     r8, rdx; __a
+lea     rdx, a0000; \"0000\"
+mov     rcx, rax; this
+call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC1IS3_EEPKcRKS3_; std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::allocator<char>>(char const*,std::allocator<char> const&)
+lea     rcx, [rbp+450h+var_120]
+lea     rdx, [rbp+450h+var_100]; obfuscatedName
+lea     rax, [rbp+450h+ob]
+mov     r8, rcx; p_method
+mov     rcx, rax; this
+call    _ZN10Obfuscator14registerMethodERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt8functionIFvvEE; Obfuscator::registerMethod(std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>> const&,std::function<void ()(void)>)
+lea     rax, [rbp+450h+var_100]
+mov     rcx, rax
+call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED1Ev; std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::~basic_string()
+lea     rax, [rbp+450h+var_D1]
+mov     rcx, rax
+call    _ZNSaIcED1Ev; std::allocator<char>::~allocator()
+lea     rax, [rbp+450h+var_120]
+mov     rcx, rax; this
+call    _ZNSt8functionIFvvEED1Ev; std::function<void ()(void)>::~function()
+lea     rax, [rbp+450h+var_A1]
+mov     rcx, rax
+call    _ZNSaIcEC1Ev; std::allocator<char>::allocator(void)
+lea     rdx, [rbp+450h+var_A1]
+lea     rax, [rbp+450h+var_D0]
+mov     r8, rdx; __a
+lea     rdx, a0000; \"0000\"
+mov     rcx, rax; this
+call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC1IS3_EEPKcRKS3_; std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::allocator<char>>(char const*,std::allocator<char> const&)
+lea     rdx, [rbp+450h+var_D0]; obfuscatedName
+lea     rax, [rbp+450h+ob]
+mov     rcx, rax; this
+call    _ZN10Obfuscator10callMethodERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE; Obfuscator::callMethod(std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>> const&)
+lea     rax, [rbp+450h+var_D0]
+mov     rcx, rax
+call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED1Ev; std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::~basic_string()
+lea     rax, [rbp+450h+var_A1]
+mov     rcx, rax
+call    _ZNSaIcED1Ev; std::allocator<char>::~allocator()
+jmp     loc_140003E9F" }
+node: { title: "11" label: "lea     rax, [rbp+450h+var_4A0]
+mov     rcx, rax; this
+call    _ZN13WindowsLoggerC1Ev; WindowsLogger::WindowsLogger(void)
+lea     rax, [rbp+450h+var_4A0]
+mov     rcx, rax; this
+call    _ZN13WindowsLogger12startLoggingEv; WindowsLogger::startLogging(void)
+lea     rax, [rbp+450h+var_4A0]
+mov     rdx, rax; __f
+lea     rax, [rbp+450h+var_A0]
+mov     rcx, rax; this
+call    _ZNSt8functionIFvvEEC1IZ4mainEUlvE2_vvEET_; std::function<void ()(void)>::function<main::{lambda(void)#4},void,void>(main::{lambda(void)#4})
+lea     rax, [rbp+450h+var_51]
+mov     rcx, rax
+call    _ZNSaIcEC1Ev; std::allocator<char>::allocator(void)
+lea     rdx, [rbp+450h+var_51]
+lea     rax, [rbp+450h+var_80]
+mov     r8, rdx; __a
+lea     rdx, a13123122; \"13123122\"
+mov     rcx, rax; this
+call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC1IS3_EEPKcRKS3_; std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::allocator<char>>(char const*,std::allocator<char> const&)
+lea     rcx, [rbp+450h+var_A0]
+lea     rdx, [rbp+450h+var_80]; obfuscatedName
+lea     rax, [rbp+450h+ob]
+mov     r8, rcx; p_method
+mov     rcx, rax; this
+call    _ZN10Obfuscator14registerMethodERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEESt8functionIFvvEE; Obfuscator::registerMethod(std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>> const&,std::function<void ()(void)>)
+lea     rax, [rbp+450h+var_80]
+mov     rcx, rax
+call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED1Ev; std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::~basic_string()
+lea     rax, [rbp+450h+var_51]
+mov     rcx, rax
+call    _ZNSaIcED1Ev; std::allocator<char>::~allocator()
+lea     rax, [rbp+450h+var_A0]
+mov     rcx, rax; this
+call    _ZNSt8functionIFvvEED1Ev; std::function<void ()(void)>::~function()
+lea     rax, [rbp+450h+var_29]
+mov     rcx, rax
+call    _ZNSaIcEC1Ev; std::allocator<char>::allocator(void)
+lea     rdx, [rbp+450h+var_29]
+lea     rax, [rbp+450h+var_50]
+mov     r8, rdx; __a
+lea     rdx, a13123122; \"13123122\"
+mov     rcx, rax; this
+call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC1IS3_EEPKcRKS3_; std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::basic_string<std::allocator<char>>(char const*,std::allocator<char> const&)
+lea     rdx, [rbp+450h+var_50]; obfuscatedName
+lea     rax, [rbp+450h+ob]
+mov     rcx, rax; this
+call    _ZN10Obfuscator10callMethodERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEE; Obfuscator::callMethod(std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>> const&)
+lea     rax, [rbp+450h+var_50]
+mov     rcx, rax
+call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED1Ev; std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::~basic_string()
+lea     rax, [rbp+450h+var_29]
+mov     rcx, rax
+call    _ZNSaIcED1Ev; std::allocator<char>::~allocator()
+lea     rax, [rbp+450h+var_4A0]
+mov     rcx, rax; this
+call    _ZN13WindowsLoggerD1Ev; WindowsLogger::~WindowsLogger()" }
+node: { title: "12" label: "lea     rax, [rbp+450h+ob]
+mov     rcx, rax; this
+call    _ZN10ObfuscatorD1Ev; Obfuscator::~Obfuscator()
+mov     eax, 0
+jmp     loc_140004097" }
+node: { title: "13" label: "mov     rbx, rax
+lea     rax, [rbp+450h+obfuscatedName]
+mov     rcx, rax
+call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED1Ev; std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::~basic_string()
+jmp     short loc_140003ECF" }
+node: { title: "14" label: "mov     rbx, rax" }
+node: { title: "15" label: "lea     rax, [rbp+450h+__a]
+mov     rcx, rax
+call    _ZNSaIcED1Ev; std::allocator<char>::~allocator()
+lea     rax, [rbp+450h+p_method]
+mov     rcx, rax; this
+call    _ZNSt8functionIFbvEED1Ev; std::function<bool ()(void)>::~function()
+jmp     loc_14000407D" }
+node: { title: "16" label: "mov     rbx, rax
+lea     rax, [rbp+450h+var_1D0]
+mov     rcx, rax
+call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED1Ev; std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::~basic_string()
+jmp     short loc_140003F09" }
+node: { title: "17" label: "mov     rbx, rax" }
+node: { title: "18" label: "lea     rax, [rbp+450h+var_1A1]
+mov     rcx, rax
+call    _ZNSaIcED1Ev; std::allocator<char>::~allocator()
+jmp     loc_14000407D" }
+node: { title: "19" label: "mov     rsi, rax
+mov     rcx, rbx; void *
+call    __cxa_free_exception
+mov     rbx, rsi
+jmp     loc_14000407D" }
+node: { title: "20" label: "mov     rbx, rax
+lea     rax, [rbp+450h+var_180]
+mov     rcx, rax
+call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED1Ev; std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::~basic_string()
+jmp     short loc_140003F47" }
+node: { title: "21" label: "mov     rbx, rax" }
+node: { title: "22" label: "lea     rax, [rbp+450h+var_151]
+mov     rcx, rax
+call    _ZNSaIcED1Ev; std::allocator<char>::~allocator()
+lea     rax, [rbp+450h+var_1A0]
+mov     rcx, rax; this
+call    _ZNSt8functionIFbvEED1Ev; std::function<bool ()(void)>::~function()
+jmp     loc_14000407D" }
+node: { title: "23" label: "mov     rbx, rax
+lea     rax, [rbp+450h+var_150]
+mov     rcx, rax
+call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED1Ev; std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::~basic_string()
+jmp     short loc_140003F81" }
+node: { title: "24" label: "mov     rbx, rax" }
+node: { title: "25" label: "lea     rax, [rbp+450h+var_121]
+mov     rcx, rax
+call    _ZNSaIcED1Ev; std::allocator<char>::~allocator()
+jmp     loc_14000407D" }
+node: { title: "26" label: "mov     rsi, rax
+mov     rcx, rbx; void *
+call    __cxa_free_exception
+mov     rbx, rsi
+jmp     loc_14000407D" }
+node: { title: "27" label: "mov     rbx, rax
+lea     rax, [rbp+450h+var_100]
+mov     rcx, rax
+call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED1Ev; std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::~basic_string()
+jmp     short loc_140003FBF" }
+node: { title: "28" label: "mov     rbx, rax" }
+node: { title: "29" label: "lea     rax, [rbp+450h+var_D1]
+mov     rcx, rax
+call    _ZNSaIcED1Ev; std::allocator<char>::~allocator()
+lea     rax, [rbp+450h+var_120]
+mov     rcx, rax; this
+call    _ZNSt8functionIFvvEED1Ev; std::function<void ()(void)>::~function()
+jmp     loc_14000407D" }
+node: { title: "30" label: "mov     rbx, rax
+lea     rax, [rbp+450h+var_D0]
+mov     rcx, rax
+call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED1Ev; std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::~basic_string()
+jmp     short loc_140003FF9" }
+node: { title: "31" label: "mov     rbx, rax" }
+node: { title: "32" label: "lea     rax, [rbp+450h+var_A1]
+mov     rcx, rax
+call    _ZNSaIcED1Ev; std::allocator<char>::~allocator()
+jmp     short loc_14000407D" }
+node: { title: "33" label: "mov     rbx, rax
+lea     rax, [rbp+450h+var_80]
+mov     rcx, rax
+call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED1Ev; std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::~basic_string()
+jmp     short loc_140004021" }
+node: { title: "34" label: "mov     rbx, rax" }
+node: { title: "35" label: "lea     rax, [rbp+450h+var_51]
+mov     rcx, rax
+call    _ZNSaIcED1Ev; std::allocator<char>::~allocator()
+lea     rax, [rbp+450h+var_A0]
+mov     rcx, rax; this
+call    _ZNSt8functionIFvvEED1Ev; std::function<void ()(void)>::~function()
+jmp     short loc_14000406C" }
+node: { title: "36" label: "mov     rbx, rax
+lea     rax, [rbp+450h+var_50]
+mov     rcx, rax
+call    _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED1Ev; std::__cxx11::basic_string<char,std::char_traits<char>,std::allocator<char>>::~basic_string()
+jmp     short loc_140004058" }
+node: { title: "37" label: "mov     rbx, rax" }
+node: { title: "38" label: "lea     rax, [rbp+450h+var_29]
+mov     rcx, rax
+call    _ZNSaIcED1Ev; std::allocator<char>::~allocator()
+jmp     short loc_14000406C" }
+node: { title: "39" label: "mov     rbx, rax" }
+node: { title: "40" label: "lea     rax, [rbp+450h+var_4A0]
+mov     rcx, rax; this
+call    _ZN13WindowsLoggerD1Ev; WindowsLogger::~WindowsLogger()
+jmp     short loc_14000407D" }
+node: { title: "41" label: "mov     rbx, rax" }
+node: { title: "42" label: "lea     rax, [rbp+450h+ob]
+mov     rcx, rax; this
+call    _ZN10ObfuscatorD1Ev; Obfuscator::~Obfuscator()
+mov     rax, rbx
+mov     rcx, rax; gcc_exc
+call    _Unwind_Resume" vertical_order: 44 }
+node: { title: "43" label: "add     rsp, 4B8h
+pop     rbx
+pop     rsi
+pop     rdi
+pop     rbp
+retn" vertical_order: 44 }
+// node 0
+edge: { sourcename: "0" targetname: "1" label: "false" color: red }
+edge: { sourcename: "0" targetname: "2" label: "true" color: darkgreen }
+// node 1
+// node 2
+edge: { sourcename: "2" targetname: "3" label: "false" color: red }
+edge: { sourcename: "2" targetname: "4" label: "true" color: darkgreen }
+// node 3
+// node 4
+edge: { sourcename: "4" targetname: "5" label: "false" color: red }
+edge: { sourcename: "4" targetname: "11" label: "true" color: darkgreen }
+// node 5
+edge: { sourcename: "5" targetname: "6" }
+// node 6
+edge: { sourcename: "6" targetname: "7" label: "false" color: red }
+edge: { sourcename: "6" targetname: "10" label: "true" color: darkgreen }
+// node 7
+edge: { sourcename: "7" targetname: "8" label: "false" color: red }
+edge: { sourcename: "7" targetname: "9" label: "true" color: darkgreen }
+// node 8
+edge: { sourcename: "8" targetname: "10" }
+// node 9
+edge: { sourcename: "9" targetname: "6" }
+// node 10
+edge: { sourcename: "10" targetname: "12" }
+// node 11
+edge: { sourcename: "11" targetname: "12" }
+// node 12
+edge: { sourcename: "12" targetname: "43" }
+// node 13
+edge: { sourcename: "13" targetname: "15" }
+// node 14
+edge: { sourcename: "14" targetname: "15" }
+// node 15
+edge: { sourcename: "15" targetname: "42" }
+// node 16
+edge: { sourcename: "16" targetname: "18" }
+// node 17
+edge: { sourcename: "17" targetname: "18" }
+// node 18
+edge: { sourcename: "18" targetname: "42" }
+// node 19
+edge: { sourcename: "19" targetname: "42" }
+// node 20
+edge: { sourcename: "20" targetname: "22" }
+// node 21
+edge: { sourcename: "21" targetname: "22" }
+// node 22
+edge: { sourcename: "22" targetname: "42" }
+// node 23
+edge: { sourcename: "23" targetname: "25" }
+// node 24
+edge: { sourcename: "24" targetname: "25" }
+// node 25
+edge: { sourcename: "25" targetname: "42" }
+// node 26
+edge: { sourcename: "26" targetname: "42" }
+// node 27
+edge: { sourcename: "27" targetname: "29" }
+// node 28
+edge: { sourcename: "28" targetname: "29" }
+// node 29
+edge: { sourcename: "29" targetname: "42" }
+// node 30
+edge: { sourcename: "30" targetname: "32" }
+// node 31
+edge: { sourcename: "31" targetname: "32" }
+// node 32
+edge: { sourcename: "32" targetname: "42" }
+// node 33
+edge: { sourcename: "33" targetname: "35" }
+// node 34
+edge: { sourcename: "34" targetname: "35" }
+// node 35
+edge: { sourcename: "35" targetname: "40" }
+// node 36
+edge: { sourcename: "36" targetname: "38" }
+// node 37
+edge: { sourcename: "37" targetname: "38" }
+// node 38
+edge: { sourcename: "38" targetname: "40" }
+// node 39
+edge: { sourcename: "39" targetname: "40" }
+// node 40
+edge: { sourcename: "40" targetname: "42" }
+// node 41
+edge: { sourcename: "41" targetname: "42" }
+// node 42
+// node 43
+}

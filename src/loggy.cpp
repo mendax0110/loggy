@@ -6,6 +6,12 @@
 #include "../include/obfuscator.h"
 
 
+/**
+ * @brief This is the main entry point for the application.
+ * @param argc -> The number of arguments.
+ * @param argv -> The arguments.
+ * @return int, 0 if the application ran successfully.
+ */
 int main(int argc, const char *argv[])
 {
     AntiDebug ad;

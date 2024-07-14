@@ -1,5 +1,10 @@
 #include "../../include/antiDebug.h"
 
+/**
+ * @brief This method will return the method of checking if a debugger is present, depening on the OS.
+ * @return true, if a debugger is present.
+ * @return false, if a debugger is not present.
+ */
 bool AntiDebug::isDebuggerPresent()
 {
 #if defined(__WIN32) || defined(_WIN64)
@@ -15,6 +20,11 @@ bool AntiDebug::isDebuggerPresent()
     return false;
 }
 
+/**
+ * @brief This method will check if a debugger is present on MacOS.
+ * @return true, if a debugger is present.
+ * @return false, if a debugger is not present.
+ */
 bool AntiDebug::checkDebuggerPresence()
 {
 #if defined(__APPLE__)
@@ -42,7 +52,11 @@ bool AntiDebug::checkDebuggerPresence()
     return false;
 }
 
-
+/**
+ * @brief This method will check for hardware breakpoints on Windows.
+ * @return true, if hardware breakpoints are present.
+ * @return false, if hardware breakpoints are not present.
+ */
 bool AntiDebug::checkForHardwareBreakpointsWindows()
 {
 #if defined(__WIN32) || defined(_WIN64)
@@ -62,6 +76,11 @@ bool AntiDebug::checkForHardwareBreakpointsWindows()
     return false;
 }
 
+/**
+ * @brief This method will check for hardware breakpoints on MacOS.
+ * @return true, if hardware breakpoints are present.
+ * @return false, if hardware breakpoints are not present.
+ */
 bool AntiDebug::checkForHardwareBreakpointsMacOs()
 {
 #if defined(__APPLE__)
@@ -81,6 +100,11 @@ bool AntiDebug::checkForHardwareBreakpointsMacOs()
     return false;
 }
 
+/**
+ * @brief This method will check for hardware breakpoints on Linux.
+ * @return true, if hardware breakpoints are present.
+ * @return false, if hardware breakpoints are not present.
+ */
 bool AntiDebug::checkForHardwareBreakpointsLinux()
 {
 #if defined(__linux__)
@@ -99,6 +123,11 @@ bool AntiDebug::checkForHardwareBreakpointsLinux()
     return false;
 }
 
+/**
+ * @brief This method will check for hardware breakpoints, depending on the OS.
+ * @return true, if hardware breakpoints are present.
+ * @return false, if hardware breakpoints are not present.
+ */
 bool AntiDebug::checkForHardwareBreakpoints()
 {
 #if defined(_WIN32) || defined(_WIN64)
